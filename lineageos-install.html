@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install LineageOS Guide</title>
+    <style>
+        :root {
+            --primary-teal: #167C80; 
+            --bg-dark: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --terminal-bg: #000000;
+            --warning: #d29922;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary-teal); font-size: 2.2rem; margin-bottom: 10px; }
+        h2 { color: var(--primary-teal); border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .warning-box {
+            border-left: 4px solid var(--warning);
+            background: rgba(210, 153, 34, 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        pre {
+            background: var(--terminal-bg);
+            padding: 18px;
+            border-radius: 8px;
+            overflow: auto;
+            border: 1px solid var(--primary-teal);
+            margin: 15px 0;
+        }
+
+        pre code {
+            color: #39ff14;
+            font-family: "SFMono-Regular", Consolas, monospace;
+        }
+
+        .step-img {
+            display: block;
+            max-width: 320px;
+            height: auto;
+            margin: 30px auto;
+            border-radius: 20px;
+            border: 3px solid var(--primary-teal);
+            box-shadow: 0 0 25px rgba(22, 124, 128, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-dim);
+            border-top: 1px solid #30363d;
+            margin-top: 50px;
+        }
+
+        a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+
+        ul li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Install LineageOS on any phone</h1>
+        <p>A universal guide for non-Samsung devices.</p>
+    </header>
+
+    <div class="card">
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>A compatible device with an unlocked bootloader</li>
+            <li>A computer (Windows, Linux, macOS…)</li>
+            <li>Basic Android modding knowledge</li>
+        </ul>
+        <div class="warning-box">
+            <strong>Note:</strong> This tutorial won't work with Samsung devices.
+        </div>
+    </div>
+
+    <section>
+        <h2>Step 1: Preparation</h2>
+        <p>To install adb and fastboot on Linux, run these commands:</p>
+        <pre><code>sudo apt update && sudo apt upgrade -y
+sudo apt install adb fastboot</code></pre>
+
+        <p>Check if your device is compatible:</p>
+        <pre><code>adb shell getprop ro.treble.enabled</code></pre>
+        <p>If it returns <strong>"true"</strong>, you can continue. If <strong>"false"</strong>, find a ROM specific to your device.</p>
+    </section>
+
+    <section>
+        <h2>Step 2: Enter Fastboot Mode</h2>
+        <p>Run this command in your terminal:</p>
+        <pre><code>adb reboot fastboot</code></pre>
+        <p>If you don't see "fastboot" or "fastbootd" on your screen, try:</p>
+        <pre><code>adb reboot bootloader</code></pre>
+    </section>
+
+    <section>
+        <h2>Step 3: Download Files</h2>
+        <h3>1. LineageOS GSI</h3>
+        <p>Download the GSI image here: <a href="https://sourceforge.net/projects/andyyan-gsi/files/latest/download">Official Builds</a></p>
+        <p>Extract the <code>.img.gz</code> file using 7-Zip or WinRAR.</p>
+
+        <h3>2. Stock ROM & VBMeta</h3>
+        <p>Search for your device's stock ROM on the internet (Example: "your device model stock rom") and download it. It is usually a <code>.zip</code> or <code>.tgz</code> file.</p>
+        <p>Extract the ROM and locate <code>vbmeta.img</code> (and <code>vbmeta_system.img</code> if present). Place them in the same folder as your GSI image.</p>
+    </section>
+
+    <div class="card">
+        <h2>Step 4: Flash the ROM</h2>
+        <div class="warning-box" style="border-color: #f85149;">
+            <strong>Important:</strong> Verify bootloader status with <code>fastboot getvar unlocked</code>.
+        </div>
+        
+        <p>Disable verifications and flash the files:</p>
+        <pre><code>fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
+fastboot flash system system.img
+fastboot format userdata</code></pre>
+    </div>
+
+    <section style="text-align: center;">
+        <h2>Success!</h2>
+        <p>Run <strong>fastboot reboot</strong> to start your new system.</p>
+        
+        <img src="welcome_screen.png" alt="LineageOS Welcome" class="step-img">
+        
+        <p>If you reach this screen, LineageOS is successfully installed!</p>
+    </section>
+
+    <div class="footer">
+        <p>Thanks for following my tutorial!</p>
+        <p>Need help? Discord: <strong>@devrebl0x</strong></p>
+    </div>
+</div>
+
+</body>
+</html>
