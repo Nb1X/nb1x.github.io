@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install OBS on Linux ARM</title>
+    <style>
+        :root {
+            --primary-teal: #167C80; 
+            --bg-dark: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --terminal-bg: #000000;
+            --warning: #d29922;
+            --danger: #f85149;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary-teal); font-size: 2.2rem; margin-bottom: 10px; }
+        h2 { color: var(--primary-teal); border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: var(--accent); }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .warning-box {
+            border-left: 4px solid var(--warning);
+            background: rgba(210, 153, 34, 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .danger-box {
+            border-left: 4px solid var(--danger);
+            background: rgba(248, 81, 73, 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        pre {
+            background: var(--terminal-bg);
+            padding: 18px;
+            border-radius: 8px;
+            overflow: auto;
+            border: 1px solid var(--primary-teal);
+            margin: 15px 0;
+        }
+
+        pre code {
+            color: #39ff14;
+            font-family: "SFMono-Regular", Consolas, monospace;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-dim);
+            border-top: 1px solid #30363d;
+            margin-top: 50px;
+        }
+
+        a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+
+        .status-badge {
+            display: inline-block;
+            background: var(--primary-teal);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Install OBS Latest Version on Linux for ARM</h1>
+        <p>Perfect for Single Board Computers (SBCs) like Raspberry Pis.</p>
+    </header>
+
+    <div class="card">
+        <h2>Compatibility & Requirements</h2>
+        <ul>
+            <li><strong>OS Support:</strong> This tool works only on Debian-based distros such as Ubuntu or Raspberry Pi OS.</li>
+            <li><strong>Hardware:</strong> Designed for ARM64 architecture.</li>
+        </ul>
+        
+        <div class="danger-box">
+            <strong>⚠ Raspberry Pi 5 Note:</strong> The Raspberry Pi 5 does not have hardware encoding. You will need to use the <strong>x264 (software)</strong> encoder for streaming.
+        </div>
+    </div>
+
+    <section>
+        <h2>Project "obs-arm64"</h2>
+        <p>I am currently developing a project to streamline the installation process on ARM devices:</p>
+        
+        <div class="card" style="border-style: dashed;">
+            <h3>GitHub Repository <span class="status-badge">In Progress</span></h3>
+            <p>Visit the project page: <a href="https://github.com/Nb1X/obs-arm64" target="_blank">https://github.com/Nb1X/obs-arm64</a></p>
+            <p>I am still working on the final touches for this release.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Coming Soon</h2>
+        <p>I will soon release a beta version along with a specialized script to automate the entire process:</p>
+        <pre><code># Future automation script
+bash install-obs-arm64.sh</code></pre>
+        <p>The <code>.sh</code> file will help you handle the entire setup.</p>
+    </section>
+
+    <div class="warning-box">
+        <strong>Stay Tuned:</strong> Once the project is released, this page will be updated with full usage instructions. Come back soon!
+    </div>
+
+    <div class="footer">
+        <p>Project by <strong>Nb1X</strong></p>
+        <p>Check the GitHub link for the latest updates.</p>
+    </div>
+</div>
+
+</body>
+</html>
