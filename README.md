@@ -14,3 +14,5 @@ Select a tutorial below:
 [Install latest OBS version on Debian Bookworm (x86_64)](https://nb1x.github.io/install-obs-bookworm.html)
 
 [Install LineageOS on any Android phone or tablet](https://nb1x.github.io/lineageos-install.html)
+
+[BetterCrewlink unofficial server](https://nb1x.github.io/alternatives/bettercrewlink-servers.html)
