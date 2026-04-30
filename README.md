@@ -1,5 +1,7 @@
 Welcome to my site!
 
+⚠️ Soon, this website will no longer be updated and will be available at https://nb1x.2bd.net
+
 Here, I'll be sharing tutorials for Linux and Windows.
 If you encounter any problems with one of my tutorials, please feel free to contact me on Discord or search for a solution online.
 
