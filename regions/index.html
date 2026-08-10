@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#050505">
+    <title>Nb1X - ModdedCrew</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #030303;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 700px;
+            padding: 22px 20px;
+            border: 1px solid rgba(255, 30, 30, 0.35);
+            border-radius: 18px;
+            background: rgba(8, 8, 8, 0.88);
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.08),
+                inset 0 0 20px rgba(255, 0, 0, 0.03);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            color: #ff2020;
+            font-size: clamp(42px, 13vw, 72px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 8px rgba(255, 0, 0, 0.65),
+                0 0 25px rgba(255, 0, 0, 0.25);
+        }
+
+        .content {
+            width: 100%;
+            max-width: 650px;
+            margin-top: 45px;
+            text-align: center;
+        }
+
+        .message {
+            padding: 25px 20px;
+            border-left: 2px solid #ff2020;
+            border-right: 2px solid #ff2020;
+            background: rgba(5, 5, 5, 0.72);
+            border-radius: 14px;
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.07),
+                inset 0 0 25px rgba(255, 0, 0, 0.025);
+            backdrop-filter: blur(5px);
+        }
+
+        .message p {
+            font-size: clamp(17px, 4.5vw, 22px);
+            line-height: 1.65;
+            color: #f5f5f5;
+        }
+
+        .highlight {
+            color: #ff2b2b;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+        }
+
+        .starlight {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 14px;
+            background: rgba(255, 0, 0, 0.035);
+            border: 1px solid rgba(255, 30, 30, 0.22);
+        }
+
+        .starlight p {
+            font-size: clamp(16px, 4vw, 20px);
+            line-height: 1.5;
+        }
+
+        .starlight a {
+            color: #ff2525;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid #ff2525;
+            transition: 0.2s;
+        }
+
+        .starlight a:hover {
+            color: #ff6060;
+        }
+
+        .play-container {
+            margin-top: 55px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .play-button {
+            width: min(85%, 360px);
+            min-height: 64px;
+            border: 2px solid #ff2020;
+            border-radius: 16px;
+            background: rgba(10, 10, 10, 0.78);
+            color: #ff2020;
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            cursor: pointer;
+            box-shadow:
+                0 0 15px rgba(255, 0, 0, 0.18),
+                inset 0 0 15px rgba(255, 0, 0, 0.04);
+            transition:
+                transform 0.15s ease,
+                background 0.15s ease,
+                box-shadow 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .play-button:active {
+            transform: scale(0.96);
+            background: rgba(255, 25, 25, 0.14);
+            box-shadow:
+                0 0 30px rgba(255, 0, 0, 0.35),
+                inset 0 0 20px rgba(255, 0, 0, 0.08);
+        }
+
+        @media (min-width: 600px) {
+            .page {
+                padding: 20px;
+            }
+
+            .content {
+                margin-top: 60px;
+            }
+
+            .message {
+                padding: 30px;
+            }
+
+            .play-container {
+                margin-top: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="stars"></canvas>
+
+    <main class="page">
+
+        <header class="header">
+            <div class="logo">Nb1X</div>
+        </header>
+
+        <section class="content">
+
+            <div class="message">
+                <p>
+                    Thanks for supporting me!
+                    To join the lobby, start <span class="highlight">Among Us</span>,
+                    go back to your browser, press the button below,
+                    go to the public lobbies and select the
+                    <span class="highlight">ModdedCrew</span> region.
+                    The lobby will appear and join it!
+                </p>
+            </div>
+
+            <div class="starlight">
+                <p>
+                    For Starlight users, click
+                    <a href="https://nb1x.github.io/regions/starlight.html">
+                        [here]
+                    </a>
+                </p>
+            </div>
+
+            <div class="play-container">
+                <button class="play-button" onclick="joinLobby()">
+                    Play
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
+
+        let stars = [];
+        let width;
+        let height;
+        let density;
+
+        function resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            density = Math.min(180, Math.max(70, Math.floor(width * height / 6500)));
+
+            stars = [];
+
+            for (let i = 0; i < density; i++) {
+                stars.push(createStar(true));
+            }
+        }
+
+        function createStar(randomX = false) {
+            const size = Math.random() * 1.7 + 0.4;
+
+            return {
+                x: randomX ? Math.random() * width : -20,
+                y: Math.random() * height,
+                size: size,
+                speed: Math.random() * 1.8 + 0.5,
+                length: Math.random() * 12 + 3,
+                opacity: Math.random() * 0.65 + 0.3
+            };
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (const star of stars) {
+                const gradient = ctx.createLinearGradient(
+                    star.x - star.length,
+                    star.y,
+                    star.x,
+                    star.y
+                );
+
+                gradient.addColorStop(0, "rgba(255,255,255,0)");
+                gradient.addColorStop(
+                    1,
+                    `rgba(255,255,255,${star.opacity})`
+                );
+
+                ctx.beginPath();
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = star.size;
+                ctx.moveTo(star.x - star.length, star.y);
+                ctx.lineTo(star.x, star.y);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                star.x += star.speed;
+
+                if (star.x - star.length > width) {
+                    Object.assign(star, createStar(false));
+                    star.x = -star.length;
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        function joinLobby() {
+            window.location.href =
+                "amongus://init?servername=ModdedCrew(EU)&serverport=443&serverip=https%3A%2F%2Fmoddedcrew.duckdns.org&usedtls=false";
+        }
+
+        window.addEventListener("resize", resize);
+
+        resize();
+        draw();
+    </script>
+
+</body>
+  </html>
