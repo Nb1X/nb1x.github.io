@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0d10">
+    <title>Nb1X - Windows</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #0b0d10;
+            color: #fff;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .avatar-wrapper {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e63946;
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.3), 0 0 60px rgba(230, 57, 70, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.5), 0 0 80px rgba(230, 57, 70, 0.2);
+            border-color: #ff6b7a;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(145deg, #f0f0f0, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+            line-height: 1.2;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+
+        .logo .red-x {
+            background: linear-gradient(145deg, #e63946, #b71c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+        }
+
+        .description {
+            color: #a0a5b0;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .description::before {
+            content: '●';
+            color: #e63946;
+            font-size: 0.6rem;
+            margin-right: 6px;
+            opacity: 0.8;
+            vertical-align: middle;
+        }
+
+        .top-bar {
+            width: 100%;
+            background: #1a1d24;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #efeff1;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        .step-title a {
+            color: #e63946;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid #e63946;
+            transition: 0.2s;
+        }
+
+        .step-title a:hover {
+            color: #ff6b7a;
+            border-bottom-color: #ff6b7a;
+        }
+
+        .step-title code {
+            background: #0e1117;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #efeff1;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .step-text-only {
+            width: 100%;
+            background: #1a1d24;
+            border-radius: 18px;
+            padding: 2rem 1.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .step-text-only p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #efeff1;
+        }
+
+        .highlight {
+            color: #e63946;
+            font-weight: 700;
+        }
+
+        .cmd-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #0e1117;
+            border-radius: 12px;
+            padding: 0.6rem 0.6rem 0.6rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin: 0.5rem 0 0.2rem 0;
+        }
+
+        .cmd-wrapper code {
+            flex: 1;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #efeff1;
+            overflow-x: auto;
+            white-space: nowrap;
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        .copy-btn {
+            flex-shrink: 0;
+            background: #1a1d24;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #a0a5b0;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #262b34;
+            color: #efeff1;
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+
+        .copy-btn.copied {
+            background: rgba(230, 57, 70, 0.15);
+            border-color: #e63946;
+            color: #e63946;
+        }
+
+        .copy-btn i {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .logo {
+                font-size: 2.4rem;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .top-bar {
+                padding: 1rem 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .step-number {
+                width: 34px;
+                height: 34px;
+                font-size: 1rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+            }
+
+            .step-text-only {
+                padding: 1.5rem 1rem;
+            }
+
+            .step-text-only p {
+                font-size: 1rem;
+            }
+
+            .cmd-wrapper {
+                flex-wrap: wrap;
+                padding: 0.8rem;
+            }
+
+            .cmd-wrapper code {
+                font-size: 0.8rem;
+                white-space: normal;
+                word-break: break-all;
+                width: 100%;
+            }
+
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="stars"></canvas>
+
+    <main class="page">
+
+        <div class="profile-section">
+            <div class="avatar-wrapper">
+                <img class="avatar" src="https://i.postimg.cc/wjcLkPHr/Screenshot-2026-08-13-22-03-31-934-com-lemon-lvoverseas-edit.jpg" alt="Nb1X avatar" />
+            </div>
+            <div class="logo">Nb1<span class="red-x">X</span></div>
+            <div class="description">Windows tutorial</div>
+        </div>
+
+        <div class="top-bar">
+            <div class="step-number">1</div>
+            <span class="step-title">Download the <a href="https://nb1x.github.io/static/regionInfo.json" target="_blank" rel="noopener noreferrer">regionInfo.json</a> file.</span>
+        </div>
+
+        <div class="top-bar">
+            <div class="step-number">2</div>
+            <span class="step-title">Press <span class="highlight">Win + R</span> on your keyboard. A window should open.</span>
+        </div>
+
+        <div class="top-bar">
+            <div class="step-number">3</div>
+            <span class="step-title">Type exactly this (do not remove the quotation marks):</span>
+        </div>
+
+        <div class="cmd-wrapper">
+            <code id="cmd-text">"%userprofile%\AppData\LocalLow\Innersloth\Among Us"</code>
+            <button class="copy-btn" id="copy-btn" onclick="copyCommand()">
+                <i class="fas fa-copy"></i> Copy
+            </button>
+        </div>
+
+        <div class="top-bar" style="margin-top: 0.5rem;">
+            <div class="step-number">4</div>
+            <span class="step-title">Copy the <span class="highlight">regionInfo.json</span> file you downloaded and paste it in the folder that opened in File Explorer.</span>
+        </div>
+
+        <div class="top-bar">
+            <div class="step-number">5</div>
+            <span class="step-title">Launch Among Us through your usual launcher (Steam, Epic, Itch.io ....) and open the Find Game menu. Select the <span class="highlight">ModdedCrew</span> region.</span>
+        </div>
+
+        <div class="step-text-only">
+            <p>
+                Only the 4 first steps should be done once.<br>
+                The <span class="highlight">ModdedCrew</span> region is added forever until you edit the regionInfo.json!
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
+
+        let stars = [];
+        let width;
+        let height;
+        let density;
+
+        function resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            density = Math.min(180, Math.max(70, Math.floor(width * height / 6500)));
+
+            stars = [];
+
+            for (let i = 0; i < density; i++) {
+                stars.push(createStar(true));
+            }
+        }
+
+        function createStar(randomX = false) {
+            const size = Math.random() * 1.7 + 0.4;
+
+            return {
+                x: randomX ? Math.random() * width : -20,
+                y: Math.random() * height,
+                size: size,
+                speed: Math.random() * 1.8 + 0.5,
+                length: Math.random() * 12 + 3,
+                opacity: Math.random() * 0.65 + 0.3
+            };
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (const star of stars) {
+                const gradient = ctx.createLinearGradient(
+                    star.x - star.length,
+                    star.y,
+                    star.x,
+                    star.y
+                );
+
+                gradient.addColorStop(0, "rgba(255,255,255,0)");
+                gradient.addColorStop(
+                    1,
+                    `rgba(255,255,255,${star.opacity})`
+                );
+
+                ctx.beginPath();
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = star.size;
+                ctx.moveTo(star.x - star.length, star.y);
+                ctx.lineTo(star.x, star.y);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                star.x += star.speed;
+
+                if (star.x - star.length > width) {
+                    Object.assign(star, createStar(false));
+                    star.x = -star.length;
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        function copyCommand() {
+            const cmd = document.getElementById("cmd-text").textContent;
+            const btn = document.getElementById("copy-btn");
+
+            navigator.clipboard.writeText(cmd).then(() => {
+                btn.classList.add("copied");
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.classList.remove("copied");
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            }).catch(() => {
+                // Fallback pour les navigateurs sans clipboard API
+                const textarea = document.createElement("textarea");
+                textarea.value = cmd;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                btn.classList.add("copied");
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.classList.remove("copied");
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            });
+        }
+
+        window.addEventListener("resize", resize);
+
+        resize();
+        draw();
+    </script>
+
+</body>
+</html>
