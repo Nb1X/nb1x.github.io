@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nb1X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 1.5rem;
+            background: #0b0d10;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .dot {
+            position: absolute;
+            width: 2.5px;
+            height: 2.5px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.5);
+            animation: shoot linear infinite;
+            opacity: 0;
+        }
+
+        .dot-red {
+            background: #e63946;
+            box-shadow: 0 0 6px 2px rgba(230, 57, 70, 0.7);
+            width: 3px;
+            height: 3px;
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0) scale(0.7);
+                opacity: 0;
+            }
+            8% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(120vw) translateY(calc(-40vh + 80vh * var(--y-dir, 0.5))) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .dot-1 {
+            left: -5%;
+            top: 8%;
+            --y-dir: 0.2;
+            animation-duration: 5.5s;
+            animation-delay: 0s;
+        }
+        .dot-2 {
+            left: -8%;
+            top: 22%;
+            --y-dir: 0.6;
+            animation-duration: 7.2s;
+            animation-delay: 1.2s;
+        }
+        .dot-3 {
+            left: -3%;
+            top: 40%;
+            --y-dir: 0.3;
+            animation-duration: 6s;
+            animation-delay: 2.8s;
+        }
+        .dot-4 {
+            left: -10%;
+            top: 55%;
+            --y-dir: 0.7;
+            animation-duration: 8s;
+            animation-delay: 0.7s;
+        }
+        .dot-5 {
+            left: -6%;
+            top: 70%;
+            --y-dir: 0.4;
+            animation-duration: 5.8s;
+            animation-delay: 3.5s;
+        }
+        .dot-6 {
+            left: -12%;
+            top: 85%;
+            --y-dir: 0.5;
+            animation-duration: 6.5s;
+            animation-delay: 1.9s;
+        }
+        .dot-7 {
+            left: -4%;
+            top: 15%;
+            --y-dir: 0.8;
+            animation-duration: 7.8s;
+            animation-delay: 4.2s;
+        }
+        .dot-8 {
+            left: -7%;
+            top: 32%;
+            --y-dir: 0.25;
+            animation-duration: 5.2s;
+            animation-delay: 0.3s;
+        }
+        .dot-9 {
+            left: -9%;
+            top: 48%;
+            --y-dir: 0.55;
+            animation-duration: 6.9s;
+            animation-delay: 2.1s;
+        }
+        .dot-10 {
+            left: -15%;
+            top: 63%;
+            --y-dir: 0.35;
+            animation-duration: 7.5s;
+            animation-delay: 3.9s;
+        }
+        .dot-11 {
+            left: -5%;
+            top: 78%;
+            --y-dir: 0.65;
+            animation-duration: 5.9s;
+            animation-delay: 0.9s;
+        }
+        .dot-12 {
+            left: -11%;
+            top: 92%;
+            --y-dir: 0.45;
+            animation-duration: 6.3s;
+            animation-delay: 2.5s;
+        }
+        .dot-13 {
+            left: -20%;
+            top: 12%;
+            --y-dir: 0.15;
+            animation-duration: 8.2s;
+            animation-delay: 1.5s;
+        }
+        .dot-14 {
+            left: -18%;
+            top: 28%;
+            --y-dir: 0.75;
+            animation-duration: 5.7s;
+            animation-delay: 3.2s;
+        }
+        .dot-15 {
+            left: -25%;
+            top: 44%;
+            --y-dir: 0.3;
+            animation-duration: 7.1s;
+            animation-delay: 0.5s;
+        }
+        .dot-16 {
+            left: -14%;
+            top: 60%;
+            --y-dir: 0.6;
+            animation-duration: 6.6s;
+            animation-delay: 4.5s;
+        }
+        .dot-17 {
+            left: -22%;
+            top: 76%;
+            --y-dir: 0.4;
+            animation-duration: 5.4s;
+            animation-delay: 1.8s;
+        }
+        .dot-18 {
+            left: -30%;
+            top: 88%;
+            --y-dir: 0.5;
+            animation-duration: 7.9s;
+            animation-delay: 2.9s;
+        }
+        .dot-19 {
+            left: -16%;
+            top: 5%;
+            --y-dir: 0.7;
+            animation-duration: 6.2s;
+            animation-delay: 3.7s;
+        }
+        .dot-20 {
+            left: -28%;
+            top: 35%;
+            --y-dir: 0.2;
+            animation-duration: 8.5s;
+            animation-delay: 0.1s;
+        }
+        .dot-21 {
+            left: -2%;
+            top: 18%;
+            --y-dir: 0.4;
+            animation-duration: 6.8s;
+            animation-delay: 2.2s;
+        }
+        .dot-22 {
+            left: -13%;
+            top: 50%;
+            --y-dir: 0.55;
+            animation-duration: 5.3s;
+            animation-delay: 3.0s;
+        }
+        .dot-23 {
+            left: -19%;
+            top: 68%;
+            --y-dir: 0.3;
+            animation-duration: 7.6s;
+            animation-delay: 0.8s;
+        }
+        .dot-24 {
+            left: -24%;
+            top: 82%;
+            --y-dir: 0.7;
+            animation-duration: 6.1s;
+            animation-delay: 1.6s;
+        }
+        .dot-25 {
+            left: -27%;
+            top: 25%;
+            --y-dir: 0.45;
+            animation-duration: 7.3s;
+            animation-delay: 3.4s;
+        }
+
+        .card {
+            max-width: 560px;
+            width: 100%;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-wrapper {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e63946;
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.3), 0 0 60px rgba(230, 57, 70, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.5), 0 0 80px rgba(230, 57, 70, 0.2);
+            border-color: #ff6b7a;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .nb1x {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(145deg, #f0f0f0, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .nb1x .red-x {
+            background: linear-gradient(145deg, #e63946, #b71c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e63946, transparent);
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .description {
+            color: #a0a5b0;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            margin-top: 0.8rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .description::before {
+            content: '●';
+            color: #e63946;
+            font-size: 0.6rem;
+            margin-right: 6px;
+            opacity: 0.8;
+            vertical-align: middle;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: #1a1d24;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem 0.6rem 0.9rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .link-btn:hover {
+            background: #262b34;
+            border-color: rgba(230, 57, 70, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(230, 57, 70, 0.1);
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 20px;
+            background: #e63946;
+            border-radius: 0 3px 3px 0;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-btn:hover::before {
+            opacity: 1;
+            height: 28px;
+        }
+
+        .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .logo-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0e1117;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.3s ease;
+        }
+
+        .link-btn:hover .logo-wrapper {
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .btn-text {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #efeff1;
+        }
+
+        .btn-text .highlight {
+            color: #e63946;
+            font-weight: 600;
+        }
+
+        .arrow-icon {
+            color: #8e94a2;
+            font-size: 1.1rem;
+            margin-left: 0.3rem;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .link-btn:hover .arrow-icon {
+            transform: translateX(4px);
+            color: #e63946;
+        }
+
+        .logo-wrapper img {
+            object-fit: contain;
+            background: #0e1117;
+        }
+
+        @media (max-width: 480px) {
+            .nb1x {
+                font-size: 2.4rem;
+            }
+            .btn-text {
+                font-size: 0.9rem;
+            }
+            .logo-wrapper {
+                width: 38px;
+                height: 38px;
+            }
+            .link-btn {
+                padding: 0.5rem 0.9rem 0.5rem 0.7rem;
+            }
+            .header::after {
+                width: 30px;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shooting-stars">
+        <div class="dot dot-1"></div>
+        <div class="dot dot-2"></div>
+        <div class="dot dot-3"></div>
+        <div class="dot dot-4"></div>
+        <div class="dot dot-5"></div>
+        <div class="dot dot-6"></div>
+        <div class="dot dot-7"></div>
+        <div class="dot dot-8"></div>
+        <div class="dot dot-9"></div>
+        <div class="dot dot-10"></div>
+        <div class="dot dot-11"></div>
+        <div class="dot dot-12"></div>
+        <div class="dot dot-13"></div>
+        <div class="dot dot-14"></div>
+        <div class="dot dot-15"></div>
+        <div class="dot dot-16"></div>
+        <div class="dot dot-17"></div>
+        <div class="dot dot-18"></div>
+        <div class="dot dot-19"></div>
+        <div class="dot dot-20"></div>
+        <div class="dot dot-21"></div>
+        <div class="dot dot-22"></div>
+        <div class="dot dot-23"></div>
+        <div class="dot dot-24"></div>
+        <div class="dot dot-25"></div>
+
+        <div class="dot dot-red" style="left:-6%; top:12%; --y-dir:0.4; animation-duration:6.7s; animation-delay:0.4s;"></div>
+        <div class="dot dot-red" style="left:-14%; top:45%; --y-dir:0.6; animation-duration:7.4s; animation-delay:2.0s;"></div>
+        <div class="dot dot-red" style="left:-9%; top:72%; --y-dir:0.3; animation-duration:5.9s; animation-delay:3.1s;"></div>
+        <div class="dot dot-red" style="left:-22%; top:30%; --y-dir:0.7; animation-duration:8.1s; animation-delay:1.3s;"></div>
+        <div class="dot dot-red" style="left:-17%; top:88%; --y-dir:0.5; animation-duration:6.3s; animation-delay:2.7s;"></div>
+        <div class="dot dot-red" style="left:-3%; top:55%; --y-dir:0.55; animation-duration:7.0s; animation-delay:0.9s;"></div>
+        <div class="dot dot-red" style="left:-25%; top:65%; --y-dir:0.35; animation-duration:6.8s; animation-delay:3.8s;"></div>
+    </div>
+
+    <div class="card">
+        <div class="avatar-wrapper">
+            <img class="avatar" src="https://i.postimg.cc/wjcLkPHr/Screenshot-2026-08-13-22-03-31-934-com-lemon-lvoverseas-edit.jpg" alt="Nb1X avatar" />
+        </div>
+
+        <div class="header">
+            <span class="nb1x">Nb1<span class="red-x">X</span></span>
+        </div>
+
+        <div class="description">Official social links of Nb1X</div>
+
+        <a href="https://tiktok.com/@iamflo0d" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <div class="btn-left">
+                <div class="logo-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg-JWMAX1apzfQmivmnEyvCijkgY0i-fbkVQPn8nDwrg&s=10" alt="TikTok logo" />
+                </div>
+                <span class="btn-text">TikTok - <span class="highlight">@iamflo0d</span></span>
+            </div>
+            <div class="arrow-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://www.youtube.com/@AUNb1X" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <div class="btn-left">
+                <div class="logo-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvfPIJBLA1Jpp46zsChX1-8ymXTpcQ6-VrdWLaImuxkQ&s=10" alt="YouTube logo" />
+                </div>
+                <span class="btn-text">YouTube - <span class="highlight">@AUNb1X</span></span>
+            </div>
+            <div class="arrow-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://twitch.tv/iamflo0d" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <div class="btn-left">
+                <div class="logo-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsVZ-u9Fqz9i1rnRqYhHwKyQqnl5sJgWncLCrUVqSMA&s=10" alt="Twitch logo" />
+                </div>
+                <span class="btn-text">Twitch - <span class="highlight">@iamflo0d</span></span>
+            </div>
+            <div class="arrow-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/4DPKJgpq9q" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <div class="btn-left">
+                <div class="logo-wrapper">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord logo" />
+                </div>
+                <span class="btn-text">Discord</span>
+            </div>
+            <div class="arrow-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+    </div>
+</body>
+  </html>
