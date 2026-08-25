@@ -370,14 +370,121 @@
       color: #58a6ff;
       text-decoration: underline;
     }
+    @media (max-width: 767px) {
+      .sidebar {
+        width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        padding: 2rem;
+        border-right: none;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar .menu-text {
+        display: inline;
+      }
+      .sidebar .sidebar-header h2 {
+        display: block;
+      }
+      .sidebar .close-btn {
+        display: flex;
+      }
+      .sidebar .open-btn {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem 1.5rem;
+      }
+      body.sidebar-collapsed .main-content {
+        margin-left: 0;
+        width: 100%;
+      }
+      .sidebar.collapsed {
+        width: 100%;
+        padding: 2rem;
+      }
+      .sidebar.collapsed .menu-text {
+        display: inline;
+      }
+      .sidebar.collapsed .sidebar-header h2 {
+        display: block;
+      }
+      .sidebar.collapsed .close-btn {
+        display: flex;
+      }
+      .sidebar.collapsed .open-btn {
+        display: none;
+      }
+      .sidebar.collapsed .sidebar-menu a {
+        justify-content: flex-start;
+        padding: 8px 10px;
+      }
+      .sidebar.collapsed .sidebar-menu a:hover {
+        padding-left: 16px;
+      }
+    }
+    @media (min-width: 768px) {
+      .sidebar .close-btn {
+        display: flex;
+      }
+      .sidebar .open-btn {
+        display: none;
+      }
+      .sidebar.collapsed .close-btn {
+        display: none;
+      }
+      .sidebar.collapsed .open-btn {
+        display: flex;
+      }
+    }
+    .mobile-menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #1e283a;
+      border: 1px solid #3a4b65;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 200;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    .mobile-menu-btn:hover {
+      background: #2a364a;
+      border-color: #ef4444;
+    }
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: #e2e8f0;
+    }
+    @media (max-width: 767px) {
+      body:not(.sidebar-open) .mobile-menu-btn {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
 
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu">
+  <svg viewBox="0 0 24 24">
+    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+  </svg>
+</button>
+
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h2>Custom Regions</h2>
-    <button class="close-btn" id="collapseBtn" aria-label="Réduire le menu">
+    <button class="close-btn" id="collapseBtn" aria-label="Fermer le menu">
       <svg class="close-icon" viewBox="0 0 24 24">
         <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.41 4.29 19.71 2.88 18.29 9.17 12 2.88 5.71 4.29 4.29 10.59 10.59 16.89 4.29z"/>
       </svg>
@@ -536,7 +643,39 @@
   const sidebar = document.getElementById('sidebar');
   const collapseBtn = document.getElementById('collapseBtn');
   const expandBtn = document.getElementById('expandBtn');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const body = document.body;
+  const isMobile = window.innerWidth < 768;
+
+  if (isMobile) {
+    sidebar.classList.add('open');
+    body.classList.add('sidebar-open');
+  }
+
+  collapseBtn.addEventListener('click', () => {
+    if (window.innerWidth < 768) {
+      sidebar.classList.remove('open');
+      body.classList.remove('sidebar-open');
+    } else {
+      sidebar.classList.add('collapsed');
+      body.classList.add('sidebar-collapsed');
+    }
+  });
+
+  expandBtn.addEventListener('click', () => {
+    if (window.innerWidth < 768) {
+      sidebar.classList.add('open');
+      body.classList.add('sidebar-open');
+    } else {
+      sidebar.classList.remove('collapsed');
+      body.classList.remove('sidebar-collapsed');
+    }
+  });
+
+  mobileMenuBtn.addEventListener('click', () => {
+    sidebar.classList.add('open');
+    body.classList.add('sidebar-open');
+  });
 
   const androidBtn = document.getElementById('androidBtn');
   const consoleBtn = document.getElementById('consoleBtn');
@@ -545,16 +684,6 @@
   const consoleTutorial = document.getElementById('consoleTutorial');
   const pcTutorial = document.getElementById('pcTutorial');
   const regionGrid = document.getElementById('regionGrid');
-
-  collapseBtn.addEventListener('click', () => {
-    sidebar.classList.add('collapsed');
-    body.classList.add('sidebar-collapsed');
-  });
-
-  expandBtn.addEventListener('click', () => {
-    sidebar.classList.remove('collapsed');
-    body.classList.remove('sidebar-collapsed');
-  });
 
   function resetTutorials() {
     mobileTutorial.style.display = 'none';
@@ -571,6 +700,10 @@
     androidBtn.classList.add('active');
     consoleBtn.classList.remove('active');
     pcBtn.classList.remove('active');
+    if (window.innerWidth < 768) {
+      sidebar.classList.remove('open');
+      body.classList.remove('sidebar-open');
+    }
   });
 
   consoleBtn.addEventListener('click', (e) => {
@@ -580,6 +713,10 @@
     consoleBtn.classList.add('active');
     androidBtn.classList.remove('active');
     pcBtn.classList.remove('active');
+    if (window.innerWidth < 768) {
+      sidebar.classList.remove('open');
+      body.classList.remove('sidebar-open');
+    }
   });
 
   pcBtn.addEventListener('click', (e) => {
@@ -589,6 +726,18 @@
     pcBtn.classList.add('active');
     androidBtn.classList.remove('active');
     consoleBtn.classList.remove('active');
+    if (window.innerWidth < 768) {
+      sidebar.classList.remove('open');
+      body.classList.remove('sidebar-open');
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+      body.classList.add('sidebar-open');
+    } else {
+      body.classList.remove('sidebar-open');
+    }
   });
 </script>
 
