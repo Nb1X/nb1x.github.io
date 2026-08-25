@@ -346,6 +346,35 @@
             vertical-align: middle;
         }
 
+        .section-title {
+            width: 100%;
+            text-align: center;
+            color: #a0a5b0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 1.2rem 0 0.8rem 0;
+            padding: 0.3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .section-title .vector-icon {
+            color: #e63946;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .section-title .vector-icon i {
+            font-size: 0.8rem;
+        }
+
         .link-btn {
             display: flex;
             align-items: center;
@@ -356,7 +385,7 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 60px;
             padding: 0.6rem 1.2rem 0.6rem 0.9rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.7rem;
             transition: all 0.2s ease;
             cursor: pointer;
             text-decoration: none;
@@ -469,6 +498,7 @@
             }
             .link-btn {
                 padding: 0.5rem 0.9rem 0.5rem 0.7rem;
+                margin-bottom: 0.6rem;
             }
             .header::after {
                 width: 30px;
@@ -476,6 +506,14 @@
             .avatar {
                 width: 80px;
                 height: 80px;
+            }
+            .section-title {
+                font-size: 0.75rem;
+                margin: 1rem 0 0.6rem 0;
+                gap: 0.4rem;
+            }
+            .section-title .vector-icon i {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -529,6 +567,13 @@
 
         <div class="description">Official social links of Nb1X</div>
 
+        <!-- AMONG US -->
+        <div class="section-title">
+            <span class="vector-icon"><i class="fas fa-gamepad"></i></span>
+            Among Us
+            <span class="vector-icon"><i class="fas fa-gamepad"></i></span>
+        </div>
+
         <a href="https://nb1x.github.io/regions" class="link-btn" target="_blank" rel="noopener noreferrer">
             <div class="btn-left">
                 <div class="logo-wrapper">
@@ -541,17 +586,24 @@
             </div>
         </a>
 
-        <a href="https://github.com/Nb1X" class="link-btn" target="_blank" rel="noopener noreferrer">
+        <a href="https://nb1x.github.io/customregions" class="link-btn" target="_blank" rel="noopener noreferrer">
             <div class="btn-left">
                 <div class="logo-wrapper">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub logo" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSta0yrHeIgJstp4NgNkpdQMreqnCtWkCFOYL8sXehgjA&s=10" alt="Custom regions logo" />
                 </div>
-                <span class="btn-text">GitHub - <span class="highlight">@Nb1X</span></span>
+                <span class="btn-text">Custom regions</span>
             </div>
             <div class="arrow-icon">
                 <i class="fas fa-chevron-right"></i>
             </div>
         </a>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="section-title">
+            <span class="vector-icon"><i class="fas fa-share-alt"></i></span>
+            Social Media
+            <span class="vector-icon"><i class="fas fa-share-alt"></i></span>
+        </div>
 
         <a href="https://tiktok.com/@iamflo0d" class="link-btn" target="_blank" rel="noopener noreferrer">
             <div class="btn-left">
@@ -601,12 +653,31 @@
             </div>
         </a>
 
-        <a href="https://nb1x.github.io/customregions" class="link-btn" target="_blank" rel="noopener noreferrer">
+        <!-- DEV TOOLS -->
+        <div class="section-title">
+            <span class="vector-icon"><i class="fas fa-code"></i></span>
+            Dev Tools
+            <span class="vector-icon"><i class="fas fa-code"></i></span>
+        </div>
+
+        <a href="https://github.com/Nb1X" class="link-btn" target="_blank" rel="noopener noreferrer">
             <div class="btn-left">
                 <div class="logo-wrapper">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSta0yrHeIgJstp4NgNkpdQMreqnCtWkCFOYL8sXehgjA&s=10" alt="Custom regions logo" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub logo" />
                 </div>
-                <span class="btn-text">Custom regions</span>
+                <span class="btn-text">GitHub - <span class="highlight">@Nb1X</span></span>
+            </div>
+            <div class="arrow-icon">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </a>
+
+        <a href="https://git-nb1x.freeddns.org" class="link-btn" target="_blank" rel="noopener noreferrer">
+            <div class="btn-left">
+                <div class="logo-wrapper">
+                    <img src="https://s2.qwant.com/thumbr/474x474/7/8/bdf05534937a7e6061db23836a798140ab8d0066d00d2a7377a533ac800d46/OIP.18IVe0eEFvLW_9QMEpaNgQHaHa.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%2Fid%2FOIP.18IVe0eEFvLW_9QMEpaNgQHaHa%3Fpid%3DApi&q=0&b=1&p=0&a=0" alt="Gitea logo" />
+                </div>
+                <span class="btn-text">Gitea</span>
             </div>
             <div class="arrow-icon">
                 <i class="fas fa-chevron-right"></i>
