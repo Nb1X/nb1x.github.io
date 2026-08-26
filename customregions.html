@@ -370,6 +370,40 @@
       color: #58a6ff;
       text-decoration: underline;
     }
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #2a3441;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .mobile-menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #1e283a;
+      border: 1px solid #3a4b65;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    .mobile-menu-btn:hover {
+      background: #2a364a;
+      border-color: #ef4444;
+    }
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: #e2e8f0;
+    }
     @media (max-width: 767px) {
       .sidebar {
         width: 100%;
@@ -440,31 +474,6 @@
       .sidebar.collapsed .open-btn {
         display: flex;
       }
-    }
-    .mobile-menu-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #1e283a;
-      border: 1px solid #3a4b65;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 200;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
-    .mobile-menu-btn:hover {
-      background: #2a364a;
-      border-color: #ef4444;
-    }
-    .mobile-menu-btn svg {
-      width: 24px;
-      height: 24px;
-      fill: #e2e8f0;
     }
     @media (max-width: 767px) {
       body:not(.sidebar-open) .mobile-menu-btn {
@@ -635,6 +644,12 @@
           <span>Supports FriendCode</span>
         </div>
       </a>
+    </div>
+
+    <div class="footer">
+      <hr style="border: none; border-top: 1px solid #2a3441; margin-bottom: 1.5rem;">
+      <p>Want to add a region to this list? Send me an e-mail at internet_zzb10x@ik.me</p>
+      <p style="margin-top: 0.5rem;">I am not affiliated with the maintainers of these regions.</p>
     </div>
   </div>
 </div>
